@@ -1,0 +1,52 @@
+{
+  "name": "react-ppt-json-viewer",
+  "version": "0.2.0",
+  "keywords": ["react", "ppt", "pptx", "viewer", "ooxml", "presentation", "json"],
+  "author": "Abhijeet Sharma (abhijeet888)",
+  "license": "MIT",
+  "description": "React component to render PPTX via JSON (pptxtojson) in the browser.",
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/abhijeet888/react-ppt-json-viewer.git"
+  },
+    "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsup",
+    "preview": "vite preview --outDir dist-example --strictPort --port 5173",
+    "release": "npm publish --access public",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.12",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^4.7.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2",
+    "vite": "^6.3.5"
+  }
+}
