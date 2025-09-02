@@ -1,5 +1,7 @@
 # react-ppt-json-viewer
 
+Package Link - https://www.npmjs.com/package/react-ppt-json-viewer
+
 A lightweight React component library for rendering PowerPoint presentations from JSON format.  
 Ideal for building **custom PPT viewers** in the browser without heavy dependencies.
 
