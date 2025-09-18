@@ -28,32 +28,35 @@ import ReactPPT from "react-ppt-json-viewer";
 ## Pass JSON directly
 ```bash
 const deck = {
-  slides: [
+  "slides": [
     {
-      id: 1,
-      backgroundColor: "#ffffff",
-      elements: [
+      "id": 1,
+      "background": {
+        "color": "#ffffff",
+        "image":"https://picsum.photos/seed/picsum/200/300"
+      },
+      "height": 500,
+      "width": 500,
+      "elements": [
         {
-          type: "text",
-          content: "Hello World",
-          x: 100,
-          y: 100,
-          fontSize: 24,
-          color: "#000000"
-        }
-      ]
-    },
-    {
-      id: 2,
-      backgroundColor: "#f0f0f0",
-      elements: [
+          "type": "text",
+          "text": "Hello World",
+          "x": 100,
+          "y": 100,
+          "fontSize": 24,
+          "color": "#000000",
+          "height":100,
+          "width": 200,
+          "rotation": 0,
+          "bold": false
+        },
         {
-          type: "image",
-          src: "https://example.com/logo.png",
-          x: 50,
-          y: 200,
-          width: 200,
-          height: 100
+          "type": "image",
+          "src": "https://picsum.photos/id/237/200/300",
+          "x": 50,
+          "y": 200,
+          "width": 200,
+          "height": 100
         }
       ]
     }
@@ -72,6 +75,36 @@ export default function App() {
 }
 
 ```
+---
+
+## Uploading the JSON file from local
+
+```bash 
+import React, { useState } from 'react';
+import ReactPPT from "../ReactPPT"
+
+const App: React.FC = () => {
+  const [file, setFile] = useState<string>("");
+
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files) {
+       const responseArray = await event.target.files[0].text()
+       setFile(JSON.parse(responseArray));
+    }
+  };
+
+  return (
+    <div>
+      <h1>React JSON to PPT Viewer</h1>
+      <input type="file" accept=".json" onChange={handleFileChange} />
+      <ReactPPT file={file} />
+    </div>
+  );
+};
+
+export default App;
+```
+
 ---
 
 ## Load JSON from url
@@ -108,19 +141,28 @@ export type ReactPPTProps = {
   "slides": [
     {
       "id": 1,
-      "backgroundColor": "#ffffff",
+      "background": {
+        "color": "#ffffff",
+        "image":"https://picsum.photos/seed/picsum/200/300"
+      },
+      "height": 500,
+      "width": 500,
       "elements": [
         {
           "type": "text",
-          "content": "Hello World",
+          "text": "Hello World",
           "x": 100,
           "y": 100,
           "fontSize": 24,
-          "color": "#000000"
+          "color": "#000000",
+          "height":100,
+          "width": 200,
+          "rotation": 0,
+          "bold": false
         },
         {
           "type": "image",
-          "src": "https://example.com/logo.png",
+          "src": "https://picsum.photos/id/237/200/300",
           "x": 50,
           "y": 200,
           "width": 200,
@@ -130,6 +172,7 @@ export type ReactPPTProps = {
     }
   ]
 }
+
 ```
 
 
